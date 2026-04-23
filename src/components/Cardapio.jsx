@@ -12,7 +12,7 @@ function Cardapio() {
 
   // useEffect que o professor vai passar
  useEffect(() => {
-    fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
+    fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian')
       .then(response => response.json())
       .then(data => {
         setPratos(data.meals);
@@ -26,16 +26,17 @@ function Cardapio() {
 
   // carregamento que o professor vai passar
 if (carregando) {
-  return <p className={styles.loading}>Carregando...</p>;
+  return <p className={styles.loading}>Procurando os melhores pratos para você...</p>;
 }
 
   return (
     <div className={styles.container}>
-      <h1>Cardápio de Frutos do Mar</h1>
+      <h1>Cardápio Canadense</h1>
      
       <div className={styles.grid}>
         {pratos.map(item => (
           <div key={item.idMeal} className={styles.card}>
+            
             <img src={item.strMealThumb} alt={item.strMeal} />
             <h3>{item.strMeal}</h3>
           </div>
